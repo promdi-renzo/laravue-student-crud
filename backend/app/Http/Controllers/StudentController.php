@@ -28,4 +28,21 @@ class StudentController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $data = Student::find($id);
+
+        if (is_null($data)) return response()->json([
+            "success" => false,
+            "message" => "Student does not exist.",
+            "data" => $data
+        ]);
+
+        return response()->json([
+            "success" => true,
+            "message" => "Student retrieved successfully.",
+            "data" => $data
+        ]);
+    }
+
 }
