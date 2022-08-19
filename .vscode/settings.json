@@ -1,0 +1,8 @@
+{
+    "conventionalCommits.scopes": [
+        "model",
+        "settings",
+        "controller",
+        "routes"
+    ]
+}
