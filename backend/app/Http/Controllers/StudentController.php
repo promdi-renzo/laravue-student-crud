@@ -68,4 +68,23 @@ class StudentController extends Controller
         ]);
     }
 
+    public function destroy($id)
+    {
+
+        $data = Student::find($id);
+
+        if (is_null(Student::find($id))) return response()->json([
+            "success" => false,
+            "message" => "Student does not exist.",
+            "data" => $data
+        ]);
+
+        $data->delete();
+
+        return response()->json([
+            "success" => true,
+            "message" => "Student deleted successfully.",
+            "data" => $data
+        ]);
+    }
 }
