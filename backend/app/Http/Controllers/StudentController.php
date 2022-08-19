@@ -45,4 +45,27 @@ class StudentController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $data = Student::find($id);
+
+        if (is_null($data)) return response()->json([
+            "success" => false,
+            "message" => "Student does not exist.",
+            "data" => $data
+        ]);
+
+        $input = $request->all();
+        $data->first_name = $input['first_name'];
+        $data->last_name = $input['last_name'];
+        $data->email = $input['email'];
+        $data->save();
+
+        return response()->json([
+            "success" => true,
+            "message" => "Student updated successfully.",
+            "data" => $data
+        ]);
+    }
+
 }
