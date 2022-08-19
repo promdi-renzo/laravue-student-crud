@@ -16,4 +16,16 @@ class StudentController extends Controller
             "data" => $data
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $data = Student::create($input);
+        return response()->json([
+            "success" => true,
+            "message" => "Student created successfully.",
+            "data" => $data
+        ]);
+    }
+
 }
